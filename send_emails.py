@@ -13,7 +13,7 @@ def main():
     with open(EMAIL_PLAIN_FILE_NAME, 'r') as f:
         message_template_plain = f.read()
     
-    for person in email_recipients[0:1]:
+    for person in email_recipients:
         to = person['email']
         subject = parameters["email subject"]
         msg_html = message_template_html.replace('<NAME>', person['first name'])
