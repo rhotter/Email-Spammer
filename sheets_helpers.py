@@ -53,16 +53,13 @@ def get_raw_data():
 def get_processed_data():
     raw_data = get_raw_data()
 
-    DECISION_COLUMN = parameters["send email column"]
-    TRIGGER = parameters["send email trigger"]
     FIRST_NAME_COLUMN = parameters["first name column"]
     EMAIL_COLUMN = parameters["email address column"]
     START_ROW = parameters["start row"]
-    
     email_recipients = [
         {'first name': row[FIRST_NAME_COLUMN-1],
          'email': row[EMAIL_COLUMN-1],
-        } for row in raw_data[START_ROW:] if row[DECISION_COLUMN-1] == TRIGGER]
+        } for row in raw_data[START_ROW-1:] if row != []]
     
     return email_recipients
 
